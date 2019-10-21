@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class UDPServer {
 
     public static void main(String[] args) throws Exception {
+         final String secretKey = "ssshhhhhhhhhhh!!!!";
          final int port = 3333;
 
 		// Step 1 : Create a socket to listen at port 1234 
@@ -31,8 +32,9 @@ public class UDPServer {
   
             // Step 3 : revieve the data in byte buffer. 
             ds.receive(DpReceive); 
+            String D_msg = AES.decrypt(data(receive).toString(), secretKey);
   
-            System.out.println("Client: " + data(receive).toString().toUpperCase()); 
+            System.out.println("Client: " + D_msg.toUpperCase()); 
   
             // Exit the server if the client sends "bye" 
             if (data(receive).toString().equals("bye")) 

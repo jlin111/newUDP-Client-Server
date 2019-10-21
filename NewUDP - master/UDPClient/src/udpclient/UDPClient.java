@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class UDPClient {
 
     public static void main(String[] args) throws IOException{
+                final String secretKey = "ssshhhhhhhhhhh!!!!";
                 final int port = 3333;
 
 		Scanner sc = new Scanner(System.in); 
@@ -30,9 +31,9 @@ public class UDPClient {
         { 
             System.out.print("Client: ");
             String inp = sc.nextLine(); 
-  
+            String E_inp = AES.encrypt(inp, secretKey) ;
             // convert the String input into the byte array. 
-            buf = inp.getBytes(); 
+            buf = E_inp.getBytes(); 
   
             // Step 2 : Create the datagramPacket for sending 
             // the data. 
@@ -47,6 +48,12 @@ public class UDPClient {
             if (inp.equals("bye")) 
                 break; 
         } 
+        
+    //String originalString = "howtodoinjava.com";
+    //String encryptedString = AES.encrypt(originalString, secretKey) ;
+    //String decryptedString = AES.decrypt(encryptedString, secretKey) ;
+     
+    ;
     } 
 }
     
